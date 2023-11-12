@@ -3,8 +3,8 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+  --matr-navbar-bg: white;
+  --matr-navbar-rgb: 0, 0, 0;
 }
 
 /* Change bootstrap variable values.
@@ -19,10 +19,3 @@ body {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
-/* Define custom styles */
-.gray-background {
-  background-color: var(--matr-navbar-bg);
-  color: var(--bs-dark);
-  padding-top: 10px;
-  padding-bottom: 20px;
-}

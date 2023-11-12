@@ -3,10 +3,10 @@ import { Col, Container } from 'react-bootstrap';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
-  <footer className="mt-auto py-3 bg-light">
+  <footer className="mt-auto py-3" style={{ backgroundColor: 'darkgreen', color: 'white' }}>
     <Container>
       <Col className="text-center">
-        Department of Information and Computer Sciences
+        UH Connect
         {' '}
         <br />
         University of Hawaii
@@ -14,8 +14,8 @@ const Footer = () => (
         Honolulu, HI 96822
         {' '}
         <br />
-        <a href="http://ics-software-engineering.github.io/meteor-application-template-react">
-          Template Home
+        <a href="https://github.com/uh-connect">
+          UH Connect GitHub
           Page
         </a>
       </Col>
