@@ -19,11 +19,6 @@ body {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
-.landing-picture {
-  background-image: url('/images/landing_background.jpg');
-  background-size: cover;
-}
-
 .button-container {
   margin: 10px;
 }

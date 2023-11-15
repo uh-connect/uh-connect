@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Navbar, Button } from 'react-bootstrap';
+import { Col, Container, Navbar, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 /* A simple static component to render some text for the landing page. */
@@ -24,10 +24,11 @@ const Landing = () => (
         </Col>
       </Container>
     </Navbar>
-    <Container id="landing-picture" fluid className="landing-picture">
-      <div className="text-center">
-        <h1>Our Motto:</h1>
-      </div>
+    <Container>
+      <Image
+        src="/images/landing_background.jpg"
+        className="d-flex w-100"
+      />
     </Container>
   </div>
 );
