@@ -11,7 +11,6 @@ const NavBar = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-
   return (
     <Navbar bg="light" expand="lg">
       <Container>
