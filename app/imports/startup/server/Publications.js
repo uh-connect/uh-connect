@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { Jobs } from '../../api/job/Job';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -8,6 +9,20 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Stuffs.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Jobs.userPublicationName, function () {
+  let username;
+  if (this.userId) {
+    username = Meteor.users.findOne(this.userId).username;
+  }
+  if (Roles.userIsInRole(this.userId, 'student')) {
+    return Jobs.collection.find();
+  }
+  if (Roles.userIsInRole(this.userId, 'company')) { // Returns only the jobs owned by the company
+    return Jobs.collection.find({ owner: username });
   }
   return this.ready();
 });
