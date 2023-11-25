@@ -6,9 +6,9 @@ import { Jobs } from '../../api/job/Job';
 import LoadingSpinner from '../components/LoadingSpinner';
 import JobItem from '../components/JobItem';
 
-const ListJobStudent = () => {
+const ListJobCompany = () => {
   const { ready, jobs } = useTracker(() => {
-    const subscription = Meteor.subscribe(Jobs.studentPublicationName);
+    const subscription = Meteor.subscribe(Jobs.companyPublicationName);
     const rdy = subscription.ready();
     const jobListings = Jobs.collection.find({}).fetch();
     return {
@@ -29,4 +29,4 @@ const ListJobStudent = () => {
 
 };
 
-export default ListJobStudent;
+export default ListJobCompany;

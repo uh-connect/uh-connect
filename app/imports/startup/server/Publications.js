@@ -19,7 +19,7 @@ Meteor.publish(Jobs.studentPublicationName, function () {
 });
 
 Meteor.publish(Jobs.companyPublicationName, function () {
-  if (this.userId() && Roles.userIsInRole(this.userId, 'company')) {
+  if (this.userId && Roles.userIsInRole(this.userId, 'company')) {
     const username = Meteor.users.findOne(this.userId).username;
     return Jobs.collection.find({ owner: username });
   }

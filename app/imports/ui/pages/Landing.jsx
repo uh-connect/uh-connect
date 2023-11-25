@@ -19,17 +19,17 @@ const Landing = () => {
             <h5>Bringing Students and Employers Together</h5>
             <Col>
               <div className="button-container">
-                {currentUser && Roles.userIsInRole(Meteor.userId(), 'company') ? ([
+                {currentUser && Roles.userIsInRole(Meteor.userId(), 'company') ? ([ // Company View of the landing page
                   <h3>Edit your Company Profile, Or Check your Job Listings</h3>,
                   <Link to="/"><Button size="lg" variant="light" className="gap-3">Edit Profile</Button></Link>,
                   <Link to="/"><Button size="lg" variant="light" className="gap-3">Jobs/Opportunities</Button></Link>,
                 ]) : ''}
-                {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([
+                {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([ // Student View of the landing page
                   <h3>Edit your Student Profile, Or Find A Job</h3>,
                   <Link to="/"><Button size="lg" variant="light" className="gap-3">Edit Profile</Button></Link>,
                   <Link to="/"><Button size="lg" variant="light" className="gap-3">Find A Job</Button></Link>,
                 ]) : ''}
-                {currentUser === '' ? ([
+                {currentUser === '' ? ([ // User is not signed it
                   <h3>Sign Up Here if You Are:</h3>,
                   <Link to="/"><Button size="lg" variant="light" className="gap-3">Student</Button></Link>,
                   <Link to="/"><Button size="lg" variant="light" className="gap-3">Company</Button></Link>,
