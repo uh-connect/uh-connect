@@ -26,6 +26,7 @@ const NavBar = () => {
             ]) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([
               <Nav.Link id="student-nav" as={NavLink} to="/student" key="student">Student</Nav.Link>,
+              <Nav.Link id="student-list" as={NavLink} to="/listjob" key="listjob">Job Listings</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
               <Nav.Link id="student-nav" as={NavLink} to="/student" key="student">Student</Nav.Link>, // @TODO student admin page

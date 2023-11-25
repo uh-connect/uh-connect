@@ -4,9 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import ListJobStudent from '../pages/ListJobStudent';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
@@ -38,7 +38,7 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/addjob" element={<CompanyProtectedRoute><AddJob /></CompanyProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
+          <Route path="/listjob" element={<StudentProtectedRoute><ListJobStudent /></StudentProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
@@ -64,9 +64,14 @@ const ProtectedRoute = ({ children }) => {
 const CompanyProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   if (Roles.userIsInRole(Meteor.userId(), 'company')) {
-    return isLogged ? children : <Navigate to="/signin" />;
+    return isLogged ? children : <Navigate to="/home" />;
   }
   return <Navigate to="/home" />;
+};
+
+const StudentProtectedRoute = ({ children }) => {
+  const isLogged = Meteor.userId() !== null;
+  return isLogged ? children : <Navigate to="/home" />;
 };
 
 /**
@@ -100,6 +105,14 @@ CompanyProtectedRoute.propTypes = {
 };
 
 CompanyProtectedRoute.defaultProps = {
+  children: <Landing />,
+};
+
+StudentProtectedRoute.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+StudentProtectedRoute.defaultProps = {
   children: <Landing />,
 };
 

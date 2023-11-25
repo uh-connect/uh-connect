@@ -13,15 +13,14 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(Jobs.userPublicationName, function () {
-  let username;
-  if (this.userId) {
-    username = Meteor.users.findOne(this.userId).username;
-  }
-  if (Roles.userIsInRole(this.userId, 'student')) {
-    return Jobs.collection.find();
-  }
-  if (Roles.userIsInRole(this.userId, 'company')) { // Returns only the jobs owned by the company
+Meteor.publish(Jobs.studentPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'student')) { return Jobs.collection.find(); }
+  return this.ready();
+});
+
+Meteor.publish(Jobs.companyPublicationName, function () {
+  if (this.userId() && Roles.userIsInRole(this.userId, 'company')) {
+    const username = Meteor.users.findOne(this.userId).username;
     return Jobs.collection.find({ owner: username });
   }
   return this.ready();
