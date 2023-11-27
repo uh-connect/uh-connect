@@ -19,6 +19,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import AddJob from '../pages/AddJob';
 import ListJobCompany from '../pages/ListJobCompany';
 import EditJob from '../pages/EditJob';
+import RoleAssign from '../pages/RoleAssign';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
+          <Route path="/role" element={<ProtectedRoute><RoleAssign /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/addjob" element={<CompanyProtectedRoute><AddJob /></CompanyProtectedRoute>} />
           <Route path="/listjob" element={<StudentProtectedRoute><ListJobStudent /></StudentProtectedRoute>} />
