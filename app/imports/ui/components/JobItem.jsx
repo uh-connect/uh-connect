@@ -30,7 +30,10 @@ const JobItem = ({ job }) => {
           <strong>Salary</strong> <br />
           <small>{job.salary}</small>
         </Card.Footer>
-        {currentUser && Roles.userIsInRole(Meteor.userId(), 'company') ? (
+        {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+          <Card.Text>Owner: {job.owner}</Card.Text>
+        ) : ''}
+        {currentUser && Roles.userIsInRole(Meteor.userId(), ['company', 'admin']) ? (
           <Card.Link href={`/edit/${job._id}`}>edit</Card.Link>
         ) : ''}
       </Card>
@@ -39,11 +42,16 @@ const JobItem = ({ job }) => {
 };
 
 JobItem.propTypes = {
-  job: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.oneOfType(PropTypes.string))),
-};
-
-JobItem.defaultProps = {
-  job: [],
+  job: PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string,
+    jobType: PropTypes.string,
+    positions: PropTypes.number,
+    description: PropTypes.string,
+    skills: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string)),
+    salary: PropTypes.string,
+    owner: PropTypes.string,
+  }).isRequired,
 };
 
 export default JobItem;

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
@@ -10,7 +9,7 @@ import { AutoForm, ErrorsField, SubmitField, SelectField } from 'uniforms-bootst
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
  */
-const SignUp = ({ location }) => {
+const RoleAssign = () => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
@@ -32,14 +31,10 @@ const SignUp = ({ location }) => {
     } else {
       setRedirectToRef(true);
     }
-    subscription.stop();
   };
 
-  /* Display the signup form. Redirect to add page after successful registration and login. */
-  const { from } = location?.state || { from: { pathname: '/home' } };
-  // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
-    return <Navigate to={from} />;
+    return <Navigate to="/home" />;
   }
   return (
     <Container id="signup-page" className="py-3">
@@ -75,16 +70,4 @@ const SignUp = ({ location }) => {
     </Container>
   );
 };
-
-/* Ensure that the React Router location object is available in case we need to redirect. */
-SignUp.propTypes = {
-  location: PropTypes.shape({
-    state: PropTypes.string,
-  }),
-};
-
-SignUp.defaultProps = {
-  location: { state: '' },
-};
-
-export default SignUp;
+export default RoleAssign;

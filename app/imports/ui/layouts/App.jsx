@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import ListJobStudent from '../pages/ListJobStudent';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
@@ -17,7 +16,9 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import AddJob from '../pages/AddJob';
+import ListJobStudent from '../pages/ListJobStudent';
 import ListJobCompany from '../pages/ListJobCompany';
+import ListJobAdmin from '../pages/ListJobAdmin';
 import EditJob from '../pages/EditJob';
 import RoleAssign from '../pages/RoleAssign';
 
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/addjob" element={<CompanyProtectedRoute><AddJob /></CompanyProtectedRoute>} />
           <Route path="/listjob" element={<StudentProtectedRoute><ListJobStudent /></StudentProtectedRoute>} />
           <Route path="/listjobcompany" element={<CompanyProtectedRoute><ListJobCompany /></CompanyProtectedRoute>} />
+          <Route path="/listjobadmin" element={<AdminProtectedRoute ready={ready}><ListJobAdmin /></AdminProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditJob /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
@@ -67,7 +69,7 @@ const ProtectedRoute = ({ children }) => {
 
 const CompanyProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
-  if (Roles.userIsInRole(Meteor.userId(), 'company')) {
+  if (Roles.userIsInRole(Meteor.userId(), ['company', 'admin'])) {
     return isLogged ? children : <Navigate to="/home" />;
   }
   return <Navigate to="/home" />;
