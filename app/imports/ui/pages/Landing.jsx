@@ -26,8 +26,8 @@ const Landing = () => {
               <Link to="/"><Button size="lg" variant="light" className="gap-3">Jobs/Opportunities</Button></Link>,
             ]) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([ // Student View of the landing page
-              <Link to="/"><Button size="lg" variant="light" className="gap-3">Edit Profile</Button></Link>,
-              <Link to="/"><Button size="lg" variant="light" className="gap-3">Find A Job</Button></Link>,
+              <Link to="/"><Button size="lg" variant="light" className="gap-3">Create/Edit Profile</Button></Link>,
+              <Link to="/"><Button size="lg" variant="light" className="gap-3">Find Job</Button></Link>,
             ]) : ''}
             {currentUser === '' ? ( // User is not signed it
               <Link to="/signup">

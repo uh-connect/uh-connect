@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { check } from 'meteor/check';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Jobs } from '../../api/job/Job';
+import { Profiles } from '../../api/profile/Profile';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -14,6 +15,7 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   return this.ready();
 });
 
+// Job Publications
 Meteor.publish(Jobs.studentPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'student')) { return Jobs.collection.find(); }
   return this.ready();
@@ -23,6 +25,22 @@ Meteor.publish(Jobs.companyPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'company')) {
     const username = Meteor.users.findOne(this.userId).username;
     return Jobs.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+// Profile Publications
+Meteor.publish(Profiles.companyPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'company')) {
+    return Profiles.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Profiles.studentPublicationNamePublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'student')) {
+    const username = Meteor.users.findOne(this.userId, 'student').username;
+    return Profiles.collection.find({ owner: username });
   }
   return this.ready();
 });
