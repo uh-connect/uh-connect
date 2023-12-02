@@ -20,6 +20,10 @@ const ListJobCompany = () => {
   return (
     (ready ? (
       <Container>
+        <div className="text-center">
+          <h1><strong>Jobs</strong></h1>
+          <p><small>Here are your jobs being displayed to students</small></p>
+        </div>
         <Row>
           {jobs.map((job) => <JobItem key={job._id} job={job} />)}
         </Row>

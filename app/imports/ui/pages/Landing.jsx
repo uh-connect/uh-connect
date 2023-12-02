@@ -10,16 +10,11 @@ const Landing = () => (
         <Col className="text-center pb-3 pt-3">
           <h1>Welcome to UH Connect</h1>
           <h5>Bringing Students and Employers Together</h5>
-          <h3>Sign Up Here if You Are:</h3>
+          <h3>Get Started Here:</h3>
           <Col>
-            <div className="button-container">
-              <Link to="/">
-                <Button size="lg" variant="light" className="gap-3">Student</Button>
-              </Link>
-              <Link to="/">
-                <Button size="lg" variant="light" className="gap-3">Company</Button>
-              </Link>
-            </div>
+            <Link to="/signup">
+              <Button size="lg" variant="light" className="gap-3">Sign Up</Button>
+            </Link>
           </Col>
         </Col>
       </Container>
