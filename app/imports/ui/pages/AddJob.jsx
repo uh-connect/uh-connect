@@ -61,20 +61,22 @@ const AddJob = () => {
                 <Row>
                   <Col>
                     <TextField name="title" />
+                  </Col>
+                  <Col>
                     <TextField name="company" />
                   </Col>
                 </Row>
                 <Row>
                   <Col>
                     <TextField name="jobType" />
+                  </Col>
+                  <Col>
                     <NumField name="positions" />
                   </Col>
                 </Row>
                 <Row>
-                  <Col>
-                    <TextField name="description" />
-                    <TextField name="skills" />
-                  </Col>
+                  <TextField name="description" />
+                  <TextField name="skills" />
                 </Row>
                 <Row>
                   <Col>
