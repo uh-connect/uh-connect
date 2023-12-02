@@ -21,6 +21,30 @@ class NavBar {
     await testController.click('#login-dropdown-sign-in');
   }
 
+  async goToJobListStudent(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#student-list');
+  }
+
+  async goToJobListCompany(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#listcompany-nav');
+  }
+
+  async gotoRoleAssign(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#role-nav');
+  }
+
   /** Check that the specified user is currently logged in. */
   async isLoggedIn(testController, username) {
     const visible = await Selector('#basic-navbar-nav').visible;

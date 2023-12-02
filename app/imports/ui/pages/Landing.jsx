@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Landing = () => (
   <div>
     <Navbar style={{ backgroundColor: 'darkgreen', color: 'white' }} expand="lg">
-      <Container className="w-100">
+      <Container className="w-100" id="landing-page">
         <Col className="text-center pb-3 pt-3">
           <h1>Welcome to UH Connect</h1>
           <h5>Bringing Students and Employers Together</h5>

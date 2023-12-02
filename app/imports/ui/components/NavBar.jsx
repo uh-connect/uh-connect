@@ -41,10 +41,12 @@ const NavBar = () => {
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
-              <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
-                Already have an account?  Sign in
-                <PersonFill />
-              </NavDropdown.Item>
+              <NavDropdown title="Dropdown" id="login-dropdown">
+                <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
+                  Already have an account?  Sign in
+                  <PersonFill />
+                </NavDropdown.Item>
+              </NavDropdown>
             ) : (
               <NavDropdown id="navbar-current-user" title={currentUser}>
                 <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/signout">

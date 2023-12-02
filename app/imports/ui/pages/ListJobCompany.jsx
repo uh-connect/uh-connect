@@ -19,7 +19,7 @@ const ListJobCompany = () => {
 
   return (
     (ready ? (
-      <Container>
+      <Container id="listjob-company">
         <div className="text-center">
           <h1><strong>Jobs</strong></h1>
           <p><small>Here are your jobs being displayed to students</small></p>
@@ -30,7 +30,6 @@ const ListJobCompany = () => {
       </Container>
     ) : <LoadingSpinner />)
   );
-
 };
 
 export default ListJobCompany;
