@@ -19,6 +19,7 @@ const formSchema = new SimpleSchema({
     type: String,
   },
   salary: String,
+  link: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -28,11 +29,11 @@ const AddJob = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { title, company, jobType, positions, description, skills, salary } = data;
+    const { title, company, jobType, positions, description, skills, salary, link } = data;
     if (Roles.userIsInRole(Meteor.userId(), 'company')) {
       const owner = Meteor.user().username;
       Jobs.collection.insert(
-        { title, company, jobType, positions, description, skills, salary, owner },
+        { title, company, jobType, positions, description, skills, salary, link, owner },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -78,6 +79,9 @@ const AddJob = () => {
                 <Row>
                   <Col>
                     <TextField name="salary" />
+                  </Col>
+                  <Col>
+                    <TextField name="link" />
                   </Col>
                 </Row>
                 <SubmitField value="Submit" />

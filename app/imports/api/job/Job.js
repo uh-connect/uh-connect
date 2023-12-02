@@ -20,6 +20,7 @@ class JobsCollection {
       skills: Array,
       'skills.$': String,
       salary: String,
+      link: String,
       owner: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

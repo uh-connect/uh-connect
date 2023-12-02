@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { Github } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
@@ -8,7 +9,7 @@ const Footer = () => (
     <Container fluid>
       <Row>
         <Col className="text-end my-2">
-          <Button variant="outline-success" className="btn-sm text-white" href="http://localhost:3000/home">FAQ</Button>
+          <Link to="/home"><Button variant="outline-success" className="btn-sm text-white">FAQ</Button></Link>
           <Button variant="outline-success" className="btn-sm text-white" href="https://uh-connect.github.io/home-page/">Project Homepage</Button>
           <Button variant="outline-success" className="btn-sm text-white" href="https://github.com/uh-connect"><Github /></Button>
         </Col>
@@ -18,8 +19,8 @@ const Footer = () => (
         </Col>
         <Col className="justify-content-start">
           <Button variant="outline-success" className="btn-sm text-white" href="#">About</Button>
-          <Button variant="outline-success" className="btn-sm text-white" href="#">Training</Button>
-          <Button variant="outline-success" className="btn-sm text-white" href="#">Terms</Button>
+          <Button variant="outline-success" className="btn-sm text-white" href="#">Get Started</Button>
+          <Link to="/home"><Button variant="outline-success" className="btn-sm text-white">Terms</Button></Link>
         </Col>
       </Row>
     </Container>

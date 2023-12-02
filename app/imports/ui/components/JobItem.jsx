@@ -28,7 +28,8 @@ const JobItem = ({ job }) => {
           {job.skills.map((skill) => <small>{skill}, </small>)} <br />
           <hr />
           <strong>Salary</strong> <br />
-          <small>{job.salary}</small>
+          <small>{job.salary}</small> <br />
+          <small><a href={job.link}>Apply Here</a></small>
         </Card.Footer>
         {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Card.Text>Owner: {job.owner}</Card.Text>
@@ -50,6 +51,7 @@ JobItem.propTypes = {
     description: PropTypes.string,
     skills: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string)),
     salary: PropTypes.string,
+    link: PropTypes.string,
     owner: PropTypes.string,
   }).isRequired,
 };
