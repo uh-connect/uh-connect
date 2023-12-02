@@ -5,7 +5,7 @@ import { Roles } from 'meteor/alanning:roles';
 /* eslint-disable no-console */
 
 const createUser = (email, password, role) => {
-  console.log(`  Creating user ${email}.`);
+  console.log(`  Creating ${role} ${email}.`);
   const userID = Accounts.createUser({
     username: email,
     email: email,
@@ -14,6 +14,14 @@ const createUser = (email, password, role) => {
   if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
+  }
+  if (role === 'student') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'student');
+  }
+  if (role === 'company') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'company');
   }
 };
 

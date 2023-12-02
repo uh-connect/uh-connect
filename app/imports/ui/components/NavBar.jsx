@@ -20,13 +20,24 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
-            {currentUser ? ([
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'company') ? ([
+              <Nav.Link id="company-nav" as={NavLink} to="/company" key="company">Company</Nav.Link>,
+              <Nav.Link id="listcompany-nav" as={NavLink} to="/listjobcompany" key="listcompanyjob">Job Listings</Nav.Link>,
+              <Nav.Link id="addJobs-nav" as={NavLink} to="/addjob" key="addjob">Add Jobs</Nav.Link>,
+            ]) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([
+              <Nav.Link id="student-nav" as={NavLink} to="/student" key="student">Student</Nav.Link>,
+              <Nav.Link id="student-list" as={NavLink} to="/listjob" key="listjob">Job Listings</Nav.Link>,
+            ]) : ''}
+            {currentUser && !Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+              <Nav.Link id="role-nav" as={NavLink} to="/role" key="role">Role Assign</Nav.Link>
+            ) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
               <Nav.Link id="student-nav" as={NavLink} to="/student" key="student">Student</Nav.Link>,
               <Nav.Link id="company-nav" as={NavLink} to="/company" key="company">Company</Nav.Link>,
+              <Nav.Link id="addJobs-nav" as={NavLink} to="/addjob" key="addjob">Add Jobs</Nav.Link>,
+              <Nav.Link id="admin-list" as={NavLink} to="/listjobadmin" key="listjobadmin">Job Listings</Nav.Link>,
             ]) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Nav.Link id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Admin</Nav.Link>
-            ) : ''}
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (

@@ -6,7 +6,8 @@
 
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "john@foo.com", "password": "changeme", "role": "student" },
+    { "email":  "company@foo.com", "password":  "changeme", "role": "company"}
   ],
 
   "defaultData": [
@@ -14,5 +15,12 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultJobs": [
+    {"title": "Front-End Developer", "company": "Tech Inc.", "jobType": "Full time internship", "positions": 2, "description": "INSERT DESCRIPTION HERE", "skills": ["Java","HTML","CSS"], "salary": "$15/hr", "owner": "company@foo.com"},
+    {"title": "Web Developer", "company": "CodeCraft Innovations", "jobType": "Full time internship", "positions": 1, "description": "INSERT DESCRIPTION HERE", "skills": ["JavaScript","Java","HTML"], "salary": "$21/hr", "owner": "company@foo.com"},
+    {"title": "Software Testing and QA", "company": "NexaTech Solutions", "jobType": "Full time position", "positions": 1, "description": "INSERT DESCRIPTION HERE", "skills": ["Java","JUnit","TestNG"], "salary": "$25/hr", "owner": "company@foo.com"},
+    {"title": "Mobile Application Dev", "company": "BlueNova", "jobType": "Full time internship", "positions": 1, "description": "INSERT DESCRIPTION HERE", "skills": ["Java","JUnit","TestNG"], "salary": "$25/hr", "owner": "random@foo.com"}
   ]
 }

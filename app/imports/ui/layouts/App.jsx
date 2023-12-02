@@ -6,10 +6,8 @@ import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -17,6 +15,12 @@ import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
+import AddJob from '../pages/AddJob';
+import ListJobStudent from '../pages/ListJobStudent';
+import ListJobCompany from '../pages/ListJobCompany';
+import ListJobAdmin from '../pages/ListJobAdmin';
+import EditJob from '../pages/EditJob';
+import RoleAssign from '../pages/RoleAssign';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -35,10 +39,14 @@ const App = () => {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
+          <Route path="/role" element={<ProtectedRoute><RoleAssign /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
+          <Route path="/addjob" element={<CompanyProtectedRoute><AddJob /></CompanyProtectedRoute>} />
+          <Route path="/listjob" element={<StudentProtectedRoute><ListJobStudent /></StudentProtectedRoute>} />
+          <Route path="/listjobcompany" element={<CompanyProtectedRoute><ListJobCompany /></CompanyProtectedRoute>} />
+          <Route path="/listjobadmin" element={<AdminProtectedRoute ready={ready}><ListJobAdmin /></AdminProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+          <Route path="/edit/:_id" element={<ProtectedRoute><EditJob /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
@@ -57,6 +65,19 @@ const App = () => {
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   return isLogged ? children : <Navigate to="/signin" />;
+};
+
+const CompanyProtectedRoute = ({ children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (Roles.userIsInRole(Meteor.userId(), ['company', 'admin'])) {
+    return isLogged ? children : <Navigate to="/home" />;
+  }
+  return <Navigate to="/home" />;
+};
+
+const StudentProtectedRoute = ({ children }) => {
+  const isLogged = Meteor.userId() !== null;
+  return isLogged ? children : <Navigate to="/home" />;
 };
 
 /**
@@ -82,6 +103,22 @@ ProtectedRoute.propTypes = {
 };
 
 ProtectedRoute.defaultProps = {
+  children: <Landing />,
+};
+
+CompanyProtectedRoute.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+CompanyProtectedRoute.defaultProps = {
+  children: <Landing />,
+};
+
+StudentProtectedRoute.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+StudentProtectedRoute.defaultProps = {
   children: <Landing />,
 };
 
