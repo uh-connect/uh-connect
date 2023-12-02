@@ -1,7 +1,7 @@
 import { Selector } from 'testcafe';
 
 class RoleAssign {
-  constructor () {
+  constructor() {
     this.pageId = '#roleassign-page';
     this.pageSelector = Selector(this.pageId);
   }
