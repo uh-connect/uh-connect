@@ -25,7 +25,7 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const AddProfile = () => {
   const username = Meteor.user().username;
   const subscription = Meteor.subscribe(Profiles.studentPublicationName);
-  const numProfiles = subscription.ready() ? Profiles.collection.find({ owner: username }).count() : 0 ;
+  const numProfiles = subscription.ready() ? Profiles.collection.find({ owner: username }).count() : 0;
   if (numProfiles !== 0) {
     return (
       <Navigate to="/home" />
