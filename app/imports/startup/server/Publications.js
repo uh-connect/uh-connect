@@ -37,7 +37,7 @@ Meteor.publish(Profiles.companyPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(Profiles.studentPublicationNamePublicationName, function () {
+Meteor.publish(Profiles.studentPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'student')) {
     const username = Meteor.users.findOne(this.userId, 'student').username;
     return Profiles.collection.find({ owner: username });

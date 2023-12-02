@@ -12,11 +12,12 @@ class ProfilesCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      firstname: String,
-      lastname: String,
+      firstName: String,
+      lastName: String,
       about: String,
       skills: String,
       interests: String,
+      link: String,
       owner: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
