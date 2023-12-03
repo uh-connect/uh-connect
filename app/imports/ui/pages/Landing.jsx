@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Container, Navbar, Button, Image, Nav } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Col, Container, Navbar, Button, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { useTracker } from 'meteor/react-meteor-data';
