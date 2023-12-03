@@ -8,9 +8,12 @@ import { BoxArrowRight, PersonFill } from 'react-bootstrap-icons';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { currentUser } = useTracker(() => ({
-    currentUser: Meteor.user() ? Meteor.user().username : '',
-  }), []);
+  const { currentUser } = useTracker(() => {
+    const username = Meteor.user() ? Meteor.user().username : '';
+    return {
+      currentUser: username,
+    };
+  }, []);
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -28,6 +31,7 @@ const NavBar = () => {
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([
               <Nav.Link id="student-nav" as={NavLink} to="/student" key="student">Student</Nav.Link>,
               <Nav.Link id="student-list" as={NavLink} to="/listjob" key="listjob">Job Listings</Nav.Link>,
+              <Nav.Link id="student-profile" as={NavLink} to="/profile" key="profile">Create/Edit Profile</Nav.Link>,
             ]) : ''}
             {currentUser && !Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Nav.Link id="role-nav" as={NavLink} to="/role" key="role">Role Assign</Nav.Link>
