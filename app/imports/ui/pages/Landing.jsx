@@ -8,7 +8,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 /* A simple static component to render some text for the landing page. */
 const Landing = () => {
   const { currentUser } = useTracker(() => {
-    const username = Meteor.user();
+    const username = Meteor.userId();
     return {
       currentUser: username,
     };
@@ -29,7 +29,7 @@ const Landing = () => {
               <Link to="/"><Button size="lg" variant="light" className="gap-3">Create/Edit Profile</Button></Link>,
               <Link to="/"><Button size="lg" variant="light" className="gap-3">Find Job</Button></Link>,
             ]) : ''}
-            {currentUser === '' ? ( // User is not signed it
+            {!currentUser ? ( // User is not signed it
               <Link to="/signup">
                 <Button size="lg" variant="light" className="gap-3">Sign Up</Button>
               </Link>
