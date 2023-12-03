@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
-import AddStuff from '../pages/AddStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -27,6 +26,7 @@ import PreviewProfile from '../pages/PreviewProfile';
 import FAQ from '../pages/FAQ';
 import About from '../pages/About';
 import Terms from '../pages/Terms';
+import ListProfile from '../pages/ListProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -54,10 +54,10 @@ const App = () => {
           <Route path="/listjob" element={<StudentProtectedRoute><ListJobStudent /></StudentProtectedRoute>} />
           <Route path="/listjobcompany" element={<CompanyProtectedRoute><ListJobCompany /></CompanyProtectedRoute>} />
           <Route path="/listjobadmin" element={<AdminProtectedRoute ready={ready}><ListJobAdmin /></AdminProtectedRoute>} />
-          <Route path="/profile" element={<StudentProtectedRoute><AddProfile /></StudentProtectedRoute>} />,
+          <Route path="/profile" element={<StudentProtectedRoute><AddProfile /></StudentProtectedRoute>} />
           <Route path="/previewprofile" element={<StudentProtectedRoute><PreviewProfile /></StudentProtectedRoute>} />
-          <Route path="/editprofile/:_id" element={<StudentProtectedRoute><EditProfile /></StudentProtectedRoute>} />,
-          <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
+          <Route path="/listprofile" element={<CompanyProtectedRoute><ListProfile /></CompanyProtectedRoute>} />
+          <Route path="/editprofile/:_id" element={<StudentProtectedRoute><EditProfile /></StudentProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditJob /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />

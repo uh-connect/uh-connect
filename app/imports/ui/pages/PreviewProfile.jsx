@@ -34,7 +34,9 @@ const previewProfile = () => {
       </Row>
       <hr />
       <Row className="text-start">
-        <h4><strong>About:</strong> <hr /> {profile.about}</h4> <hr />
+        <h4 className="pb-2"><strong>About Me</strong></h4>
+        <h4 className="pb-2">{profile.about}</h4>
+        <hr />
       </Row>
       <Row>
         <Col>
@@ -43,6 +45,10 @@ const previewProfile = () => {
         <Col className="text-end">
           <h4><strong>Resume:</strong> <a href={profile.link}>Click Me!</a></h4>
         </Col>
+      </Row>
+      <hr />
+      <Row>
+        <h4><strong>Contact:</strong> {profile.owner}</h4>
       </Row>
       <hr />
       <Row>
