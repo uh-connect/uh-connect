@@ -68,6 +68,7 @@ const AddProfile = () => {
           <Col className="text-center">
             <h2><strong>Tell me about yourself</strong></h2>
             <h6><strong><ExclamationOctagon /> PROFILES ARE PUBLIC TO COMPANIES</strong></h6>
+            <p><small><strong>Disclaimer:</strong> You are responsible for what you post online.</small></p>
           </Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
