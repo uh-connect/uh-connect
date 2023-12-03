@@ -9,18 +9,18 @@ const Footer = () => (
     <Container fluid>
       <Row>
         <Col className="text-end my-2">
-          <Link to="/home"><Button variant="outline-success" className="btn-sm text-white">FAQ</Button></Link>
+          <Link to="/faq"><Button variant="outline-success" className="btn-sm text-white">FAQ</Button></Link>
           <Button variant="outline-success" className="btn-sm text-white" href="https://uh-connect.github.io/home-page/">Project Homepage</Button>
           <Button variant="outline-success" className="btn-sm text-white" href="https://github.com/uh-connect"><Github /></Button>
         </Col>
         <Col className="text-center">
-          <Button variant="outline-success"><Image src="/images/UH_Connect_Main_Logo.jpg" alt="..." width={50} /></Button> <br />
+          <Link to="/home"><Button variant="outline-success"><Image src="/images/UH_Connect_Main_Logo.jpg" alt="..." width={50} /></Button></Link> <br />
           © 2023 UHConnect, Inc.
         </Col>
         <Col className="justify-content-start">
-          <Button variant="outline-success" className="btn-sm text-white" href="#">About</Button>
-          <Button variant="outline-success" className="btn-sm text-white" href="#">Get Started</Button>
-          <Link to="/home"><Button variant="outline-success" className="btn-sm text-white">Terms</Button></Link>
+          <Link to="/about"><Button variant="outline-success" className="btn-sm text-white">About</Button></Link>
+          <Button variant="outline-success" className="btn-sm text-white">Get Started</Button>
+          <Link to="/terms"><Button variant="outline-success" className="btn-sm text-white">Terms</Button></Link>
         </Col>
       </Row>
     </Container>

@@ -21,6 +21,9 @@ import ListJobCompany from '../pages/ListJobCompany';
 import ListJobAdmin from '../pages/ListJobAdmin';
 import EditJob from '../pages/EditJob';
 import RoleAssign from '../pages/RoleAssign';
+import FAQ from '../pages/FAQ';
+import About from '../pages/About';
+import Terms from '../pages/Terms';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -41,6 +44,9 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/role" element={<ProtectedRoute><RoleAssign /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/faq" element={<ProtectedRoute><FAQ /></ProtectedRoute>} />
+          <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+          <Route path="/terms" element={<ProtectedRoute><Terms /></ProtectedRoute>} />
           <Route path="/addjob" element={<CompanyProtectedRoute><AddJob /></CompanyProtectedRoute>} />
           <Route path="/listjob" element={<StudentProtectedRoute><ListJobStudent /></StudentProtectedRoute>} />
           <Route path="/listjobcompany" element={<CompanyProtectedRoute><ListJobCompany /></CompanyProtectedRoute>} />
