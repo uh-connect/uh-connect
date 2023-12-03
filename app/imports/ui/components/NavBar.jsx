@@ -43,7 +43,7 @@ const NavBar = () => {
             {currentUser === '' ? (
               <NavDropdown title="Dropdown" id="login-dropdown">
                 <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
-                  Already have an account?  Sign in
+                  Sign in
                   <PersonFill />
                 </NavDropdown.Item>
               </NavDropdown>
