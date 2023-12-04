@@ -27,6 +27,8 @@ import FAQ from '../pages/FAQ';
 import About from '../pages/About';
 import Terms from '../pages/Terms';
 import ListProfile from '../pages/ListProfile';
+import ShoppingCartStudent from '../pages/ShoppingCartStudent';
+import ShoppingCartCompany from '../pages/ShoppingCartCompany';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -58,6 +60,8 @@ const App = () => {
           <Route path="/previewprofile" element={<StudentProtectedRoute><PreviewProfile /></StudentProtectedRoute>} />
           <Route path="/listprofile" element={<CompanyProtectedRoute><ListProfile /></CompanyProtectedRoute>} />
           <Route path="/editprofile/:_id" element={<StudentProtectedRoute><EditProfile /></StudentProtectedRoute>} />
+          <Route path="/cartstudent" element={<StudentProtectedRoute><ShoppingCartStudent /></StudentProtectedRoute>} />
+          <Route path="/cartcompany" element={<CompanyProtectedRoute><ShoppingCartCompany /></CompanyProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditJob /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />

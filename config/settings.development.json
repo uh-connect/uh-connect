@@ -38,5 +38,12 @@
       "link": "https://github.com/uh-connect",
       "owner": "john@foo.com"
     }
+  ],
+
+  "defaultCart": [
+    {
+      "itemId": "somerandomshit", "role": "student",
+      "owner": "admin@foo.com"
+    }
   ]
 }

@@ -4,6 +4,7 @@ import { check } from 'meteor/check';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Jobs } from '../../api/job/Job';
 import { Profiles } from '../../api/profile/Profile';
+import { SavedList } from '../../api/cart/Cart';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -17,7 +18,9 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 
 // Job Publications
 Meteor.publish(Jobs.studentPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'student')) { return Jobs.collection.find(); }
+  if (this.userId && Roles.userIsInRole(this.userId, 'student')) {
+    return Jobs.collection.find();
+  }
   return this.ready();
 });
 
@@ -41,6 +44,15 @@ Meteor.publish(Profiles.studentPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'student')) {
     const username = Meteor.users.findOne(this.userId, 'student').username;
     return Profiles.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+// Cart Publications
+Meteor.publish(SavedList.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId, 'student').username;
+    return SavedList.collection.find({ owner: username });
   }
   return this.ready();
 });
