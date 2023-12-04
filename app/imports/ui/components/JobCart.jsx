@@ -51,6 +51,7 @@ const JobCart = ({ job }) => {
         <small>{item.salary}</small> <br />
         <small><a href={item.link}>Apply Here</a></small>
       </Card.Footer>
+      <Button variant="danger" onClick={buttonHandler}>Remove</Button>
     </Card>
   ) : <LoadingSpinner />);
 };
