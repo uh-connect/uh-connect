@@ -26,7 +26,7 @@ const JobCart = ({ job }) => {
 
   useEffect(() => {
     if (isLoading) {
-      //swal('Removing Item');
+      swal('Removing Item');
       setLoading(false);
     }
   }, [isLoading]);

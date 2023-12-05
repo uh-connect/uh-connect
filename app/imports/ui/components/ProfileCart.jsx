@@ -23,7 +23,7 @@ const ProfileCart = ({ profile }) => {
 
   useEffect(() => {
     if (isLoading) {
-      //swal('Removing Item');
+      swal('Removing Item');
       setLoading(false);
     }
   }, [isLoading]);

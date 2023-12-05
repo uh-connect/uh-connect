@@ -27,7 +27,7 @@ const JobItem = ({ job }) => {
 
   useEffect(() => {
     if (isLoading) {
-      //swal('Adding Item');
+      swal('Adding Item');
       setLoading(false);
     }
     if (numItems > 0) {
