@@ -2,7 +2,7 @@ import { Selector } from 'testcafe';
 
 class Footer {
   constructor() {
-    this.pageId = "#footer-container";
+    this.pageId = '#footer-container';
     this.pageSelector = Selector(this.pageId);
   }
 
