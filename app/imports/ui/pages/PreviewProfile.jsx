@@ -19,7 +19,7 @@ const previewProfile = () => {
     };
   }, []);
   return ready ? (
-    <Container>
+    <Container id="preview-profile">
       <Row className="text-center">
         <h3><strong>Preview of your Profile</strong></h3>
       </Row>

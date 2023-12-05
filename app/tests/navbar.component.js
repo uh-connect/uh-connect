@@ -34,7 +34,24 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
+    await testController.expect(Selector('#listprofile-nav').exists).ok();
     await testController.click('#listcompany-nav');
+  }
+
+  async goToProfiles(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#listprofile-nav');
+  }
+
+  async goToPreviewProfiles(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#student-profile');
   }
 
   async gotoRoleAssign(testController) {
@@ -43,6 +60,15 @@ class NavBar {
       await testController.click('button.navbar-toggler');
     }
     await testController.click('#role-nav');
+  }
+
+  async goToCart(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#navbar-current-user');
+    await testController.click('#navbar-cart');
   }
 
   /** Check that the specified user is currently logged in. */

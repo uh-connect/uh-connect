@@ -5,7 +5,7 @@ import { Col, Container, Navbar } from 'react-bootstrap';
 const FAQ = () => (
   <div>
     <Navbar style={{ backgroundColor: 'darkgreen', color: 'white' }} expand="lg">
-      <Container className="w-100" id="landing-page">
+      <Container className="w-100" id="FAQ-page">
         <Col className="text-center pb-3 pt-3">
           <h2><strong>Frequently Asked Questions</strong></h2>
         </Col>

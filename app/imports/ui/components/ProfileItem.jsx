@@ -26,7 +26,7 @@ const ProfileItem = ({ profile }) => {
 
   useEffect(() => {
     if (isLoading) {
-      swal('Adding Item');
+      //swal('Adding Item');
       setLoading(false);
     }
     if (numItems > 0) {
@@ -65,7 +65,7 @@ const ProfileItem = ({ profile }) => {
           <h4><strong>Contact:</strong> {profile.owner}</h4>
         </Col>
         <Col>
-          <Button onClick={buttonHandler} disabled={inList}>Save</Button>
+          <Button id="add-cart" onClick={buttonHandler} disabled={inList}>Save</Button>
         </Col>
       </Row>
       <hr />

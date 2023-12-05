@@ -23,12 +23,12 @@ const ProfileCart = ({ profile }) => {
 
   useEffect(() => {
     if (isLoading) {
-      swal('Removing Item');
+      //swal('Removing Item');
       setLoading(false);
     }
   }, [isLoading]);
   return (
-    <Container className="p-5 border border-dark">
+    <Container className="p-5 border border-dark" id="profile-cart">
       <Row>
         <Col>
           <h4><strong>Name:</strong> {item.firstName} {item.lastName}</h4>
@@ -57,7 +57,7 @@ const ProfileCart = ({ profile }) => {
           <h4><strong>Contact:</strong> {item.owner}</h4>
         </Col>
         <Col className="justify-content-end">
-          <Button variant="danger" className="btn-sm" onClick={buttonHandler}>Remove</Button>
+          <Button id="remove-cart" variant="danger" className="btn-sm" onClick={buttonHandler}>Remove</Button>
         </Col>
       </Row>
       <hr />

@@ -14,6 +14,11 @@ class ListJobStudent {
     const elemCount = Selector('column').count;
     await testController.expect(elemCount.gt(1));
   }
+
+  async addToCart(testController) {
+    await testController.expect(Selector('#add-cart').exists).ok();
+    await testController.click('#add-cart');
+  }
 }
 
 export const listJobStudent = new ListJobStudent();

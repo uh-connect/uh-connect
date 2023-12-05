@@ -26,12 +26,12 @@ const JobCart = ({ job }) => {
 
   useEffect(() => {
     if (isLoading) {
-      swal('Removing Item');
+      //swal('Removing Item');
       setLoading(false);
     }
   }, [isLoading]);
   return (ready ? (
-    <Card className="p-4 border" style={{ width: '18rem' }}>
+    <Card id="job-card" className="p-4 border" style={{ width: '18rem' }}>
       <Card.Title className="text-center"><strong>{item.title}</strong></Card.Title>
       <Card.Body>
         <Card.Text>
@@ -51,7 +51,7 @@ const JobCart = ({ job }) => {
         <small>{item.salary}</small> <br />
         <small><a href={item.link}>Apply Here</a></small>
       </Card.Footer>
-      <Button variant="danger" onClick={buttonHandler}>Remove</Button>
+      <Button id="remove-cart" variant="danger" onClick={buttonHandler}>Remove</Button>
     </Card>
   ) : <LoadingSpinner />);
 };

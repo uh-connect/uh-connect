@@ -27,7 +27,7 @@ const JobItem = ({ job }) => {
 
   useEffect(() => {
     if (isLoading) {
-      swal('Adding Item');
+      //swal('Adding Item');
       setLoading(false);
     }
     if (numItems > 0) {
@@ -59,7 +59,7 @@ const JobItem = ({ job }) => {
           <small><a href={job.link}>Apply Here</a></small>
         </Card.Footer>
         {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? (
-          <Button onClick={buttonHandler} disabled={inList}>Save</Button>
+          <Button id="add-cart" onClick={buttonHandler} disabled={inList}>Save</Button>
         ) : ''}
         {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Card.Text>Owner: {job.owner}</Card.Text>
