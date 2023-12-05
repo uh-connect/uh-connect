@@ -21,7 +21,7 @@ class Footer {
     await testController.click('#project-button');
   }
 
-  async goToGitHub(testController){
+  async goToGitHub(testController) {
     await testController.expect(Selector('#git-button').exists).ok();
     await testController.click('#git-button');
   }
