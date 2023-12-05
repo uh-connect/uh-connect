@@ -23,8 +23,8 @@ const CartStudent = () => {
     (ready ? (
       <Container id="cart-student">
         <div className="text-center">
-          <h1><strong>List</strong></h1>
-          <p><small>Here are your saved jobs</small></p>
+          <h1><strong>Saved Jobs</strong></h1>
+          <p><small>If you want to save a job that your interested in, click &apos;save&apos; on the job, and you can check back here to look over jobs you are interested in.</small></p>
         </div>
         <Row>
           {cart.map((item) => <JobCart key={item._id} job={item} />)}

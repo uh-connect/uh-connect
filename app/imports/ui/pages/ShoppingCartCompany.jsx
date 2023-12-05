@@ -23,8 +23,8 @@ const CartCompany = () => {
     (ready ? (
       <Container id="listjob-company">
         <div className="text-center">
-          <h1><strong>List</strong></h1>
-          <p><small>Here are your saved profiles</small></p>
+          <h1><strong>Saved Profiles</strong></h1>
+          <p><small>If you find a recruit that is suitable for the job, click &apos;save&apos; on the profile, and you can check back here to look over recruits.</small></p>
         </div>
         <Row>
           {cart.map((item) => <ProfileCart key={item._id} profile={item} />)}
