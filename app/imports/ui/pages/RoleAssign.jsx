@@ -53,9 +53,7 @@ const RoleAssign = () => {
             </Card>
           </AutoForm>
           <Alert variant="light">
-            Already have an account? Login
-            {' '}
-            <Link to="/signin">here</Link>
+            <Link to="/">Click here to go back to the homepage!</Link>
           </Alert>
           {error === '' ? (
             ''
