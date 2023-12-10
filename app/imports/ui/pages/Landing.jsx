@@ -62,7 +62,7 @@ const Landing = () => {
         <Image
           src="/images/admin-background.png"
           className="d-flex w-100"
-        />
+        />,
       ]) : ''}
       <Container>
         {!currentUser ? ( // User is not signed it
