@@ -17,7 +17,7 @@ const RoleAssign = () => {
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const { role } = doc;
-    Meteor.call('roleAssigner', { role: role });
+    const ready = Meteor.call('roleAssigner', { role: role });
     window.location.reload(false);
   };
   return (
