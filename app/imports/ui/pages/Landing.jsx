@@ -32,10 +32,10 @@ const Landing = () => {
                 <Button size="lg" variant="light" className="gap-3">Sign Up</Button>
               </Link>
             ) : ''}
-            {currentUser && !Roles.userIsInRole(Meteor.userId(), ['student', 'company']) ? ( // SIGNED IN, NO ROLES ======
+            {currentUser && !Roles.userIsInRole(Meteor.userId(), ['student', 'company', 'admin']) ? ( // SIGNED IN, NO ROLES ======
               <h1><strong>You currently do not have a role!</strong></h1>
             ) : ''}
-            {currentUser && !Roles.userIsInRole(Meteor.userId(), ['student', 'company']) ? (
+            {currentUser && !Roles.userIsInRole(Meteor.userId(), ['student', 'company', 'admin']) ? (
               <Link to="/role">
                 <Button size="lg" variant="light" className="gap-3">Select Role</Button>
               </Link>
@@ -52,9 +52,18 @@ const Landing = () => {
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'company') ? ([
               <h5><strong>You are currently a Company</strong></h5>,
             ]) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? ([ // Admin View of the landing page ======
+              <h1><strong>Welcome Back, Admin!</strong></h1>,
+            ]) : ''}
           </Col>
         </Container>
       </Navbar>
+      {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? ([ // Company image ==============================
+        <Image
+          src="/images/admin-background.png"
+          className="d-flex w-100"
+        />
+      ]) : ''}
       <Container>
         {!currentUser ? ( // User is not signed it
           <Image
@@ -62,7 +71,7 @@ const Landing = () => {
             className="d-flex w-100"
           />
         ) : ''}
-        {currentUser && !Roles.userIsInRole(Meteor.userId(), ['student', 'company']) ? ( // SIGNED IN, NO ROLE ===========
+        {currentUser && !Roles.userIsInRole(Meteor.userId(), ['student', 'company', 'admin']) ? ( // SIGNED IN, NO ROLE ===========
           <Image
             src="/images/landing_background.jpg"
             className="d-flex w-100"
