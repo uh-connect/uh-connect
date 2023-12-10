@@ -17,8 +17,10 @@ const RoleAssign = () => {
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const { role } = doc;
-    const ready = Meteor.call('roleAssigner', { role: role });
-    window.location.reload(false);
+    const ready = Meteor.call('roleAssigner', { role: role }); // MAKE SURE ITS SYNCHRONOUS
+    if (ready === undefined) { // This needs to be undefined
+      window.location.reload(false);
+    }
   };
   return (
     <Container id="roleassign-page" className="py-3">
