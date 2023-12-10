@@ -23,8 +23,8 @@ const RoleAssign = () => {
         console.log(error);
       } else {
         console.log(result);
-        swal('Waiting for role refresh');
-        Meteor.setTimeout(function () { window.location.reload(); }, 5000);
+        swal('Waiting for role refresh, wait 3 seconds...');
+        Meteor.setTimeout(function () { window.location.reload(); }, 3000);
       }
     }); // MAKE SURE ITS SYNCHRONOUS
   };
