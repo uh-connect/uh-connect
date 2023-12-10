@@ -39,18 +39,18 @@ const Landing = () => {
               <Link to="/role">
                 <Button size="lg" variant="light" className="gap-3">Select Role</Button>
               </Link>
-              ) : ''}
+            ) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([ // Student View of the landing page ======
-              <h1><strong>Welcome Back!</strong></h1>
+              <h1><strong>Welcome Back!</strong></h1>,
             ]) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([
-              <h5><strong>You are currently a Student</strong></h5>
+              <h5><strong>You are currently a Student</strong></h5>,
             ]) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'company') ? ([ // Company View of the landing page ======
-              <h1><strong>Welcome Back!</strong></h1>
+              <h1><strong>Welcome Back!</strong></h1>,
             ]) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'company') ? ([
-              <h5><strong>You are currently a Company</strong></h5>
+              <h5><strong>You are currently a Company</strong></h5>,
             ]) : ''}
           </Col>
         </Container>
@@ -75,13 +75,13 @@ const Landing = () => {
               className="d-flex justify-content-center"
               width="800"
             />
-          </div>
+          </div>,
         ]) : ''}
         {currentUser && Roles.userIsInRole(Meteor.userId(), 'company') ? ([ // Company View of the landing page ==========
           <div className="d-flex justify-content-center align-items-center pt-2">
             <Link to="/addjob"><Button size="lg" variant="light" className="gap-3">Add a Job</Button></Link>
             <Link to="/listprofile"><Button size="lg" variant="light" className="gap-3">Recruit Students</Button></Link>
-          </div>
+          </div>,
         ]) : ''}
         {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([ // Student Image ============================
           <div className="d-flex justify-content-center align-items-center pt-5">
@@ -90,13 +90,13 @@ const Landing = () => {
               className="d-flex justify-content-center"
               width="800"
             />
-          </div>
+          </div>,
         ]) : ''}
         {currentUser && Roles.userIsInRole(Meteor.userId(), 'student') ? ([ // Student View of the landing page =========
           <div className="d-flex justify-content-center align-items-center pt-2">
             <Link to="/listjob"><Button size="lg" variant="light" className="gap-3">Job Listings</Button></Link>
             <Link to="/profile"><Button size="lg" variant="light" className="gap-3">Create/Edit Profile</Button></Link>
-          </div>
+          </div>,
         ]) : ''}
       </Container>
     </div>

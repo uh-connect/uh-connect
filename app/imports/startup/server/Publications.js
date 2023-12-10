@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { check } from 'meteor/check';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Jobs } from '../../api/job/Job';
 import { Profiles } from '../../api/profile/Profile';
@@ -78,16 +77,6 @@ Meteor.publish(Jobs.adminPublicationName, function () {
 Meteor.publish(null, function () {
   if (this.userId) {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
-  }
-  return this.ready();
-});
-
-Meteor.publish('roles', function (role) {
-  check(role, String);
-  if (this.userId) {
-    Roles.removeUsersFromRoles(this.userId, Roles.getRolesForUser(this.userId));
-    Roles.addUsersToRoles(this.userId, role);
-    return null;
   }
   return this.ready();
 });
