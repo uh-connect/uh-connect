@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
+import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, SelectField } from 'uniforms-bootstrap5';
 
@@ -17,10 +18,15 @@ const RoleAssign = () => {
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const { role } = doc;
-    const ready = Meteor.call('roleAssigner', { role: role }); // MAKE SURE ITS SYNCHRONOUS
-    if (ready === undefined) { // This needs to be undefined
-      window.location.reload(false);
-    }
+    Meteor.call('roleAssigner', { role: role }, (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(result);
+        swal('Waiting for role refresh');
+        Meteor.setTimeout(function () { window.location.reload(); }, 5000);
+      }
+    }); // MAKE SURE ITS SYNCHRONOUS
   };
   return (
     <Container id="roleassign-page" className="py-3">

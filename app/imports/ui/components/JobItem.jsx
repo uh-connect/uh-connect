@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import { SavedList } from '../../api/cart/Cart';
+import Content from './ReadMore';
 
 const JobItem = ({ job }) => {
   const [isLoading, setLoading] = useState(false);
@@ -47,7 +48,7 @@ const JobItem = ({ job }) => {
           </Card.Text>
           <Card.Text>
             <strong>Position Description</strong> <br />
-            <small>INSERT DESC HERE</small>
+            <Content description={job.description} />
           </Card.Text>
         </Card.Body>
         <Card.Footer>
